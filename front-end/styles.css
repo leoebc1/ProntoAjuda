@@ -1,0 +1,272 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul-escuro: #1A2A3A;
+    --azul-primario: #2C3E50;
+    --azul-secundario: #34495E;
+    --azul-detalhes: #4A6274;
+    --azul-destaque: #5D7A8C;
+    --fundo-claro: #ECF0F1;
+}
+
+#main-page-header {
+    height: 50px;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom,
+            #1A2A3A 0%,
+            #2C3E50 30%,
+            #5D7A8C 100%
+        );
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: white;
+    transition: background 0.5s ease;
+}
+
+body.disguise-mode {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+    color: #4a5568;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1A2A3A;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 100;
+    transition: background-color 0.5s ease;
+}
+
+body.disguise-mode footer {
+    background-color: #e2e8f0;
+}
+
+/* --- BOTÃO DE AJUDA --- */
+.help-button-container {
+    position: fixed;
+    bottom: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
+
+body.disguise-mode .help-button-container {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.emergency-button {
+    background: linear-gradient(to right, #2C3E50, #34495E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.disguise-mode .emergency-button {
+    background: linear-gradient(to right, #ffbf69, #ff9f1c);
+    color: #2c3e50;
+}
+
+.emergency-button:hover {
+    background: linear-gradient(to right, #34495E, #4A6274);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.disguise-mode .emergency-button:hover {
+    background: linear-gradient(to right, #ff9f1c, #ffbf69);
+}
+
+.icon {
+    font-size: 5ch;
+}
+
+/* Estilo do Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #5D7A8C;
+}
+
+body.disguise-mode input:checked + .slider {
+    background-color: #ff9f1c;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 5px rgba(93, 122, 140, 0.8);
+}
+
+/*
+####################################################
+MODO DISGUISE
+####################################################
+*/
+
+.disguise-content {
+    display: none;
+}
+
+body.disguise-mode .disguise-content {
+    display: block;
+}
+
+body.disguise-mode .normal-content {
+    display: none;
+}
+
+/* Layout básico do cabeçalho */
+.site-header {
+    background-color: #ff9f1c;
+    padding: 15px 0;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Centraliza e limita largura */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+/* Nome do site */
+.logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: "DM Serif Display", serif;
+    text-align: center;
+    align-items: center;
+}
+
+/* Conteúdo do app de receitas */
+.recipe-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 80px; /* Para não ficar atrás do cabeçalho fixo */
+    padding-bottom: 80px; /* Para não ficar atrás do footer */
+}
+
+.recipe-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    color: #2c3e50;
+}
+
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    background-color: #ffbf69;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+}
+
+.recipe-details {
+    padding: 20px;
+}
+
+.recipe-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #ff9f1c;
+}
+
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.recipe-description {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.recipe-button {
+    background-color: #ff9f1c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.recipe-button:hover {
+    background-color: #e08e17;
+}

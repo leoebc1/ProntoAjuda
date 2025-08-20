@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProntoAjuda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Conteúdo normal (ProntoAjuda) -->
+    <div class="normal-content">
+        <header id="main-page-header">
+            <div id="main-page-header-div"></div>
+        </header>
+
+        <div class="help-button-container">
+            <button class="emergency-button">
+                <span class="icon">🚨</span> Chamar Ajuda (190)
+            </button>
+        </div>
+    </div>
+
+    <!-- Conteúdo do modo disfarce (Receitas DaHora) -->
+    <div class="disguise-content">
+        <header class="site-header">
+            <div class="container">
+                <h1 class="logo">Receitas do Dia</h1>
+            </div>
+        </header>
+
+        <div class="recipe-content">
+            <div class="recipe-card">
+                <div class="recipe-image">🍝</div>
+                <div class="recipe-details">
+                    <h2 class="recipe-title">Espaguete à Carbonara</h2>
+                    <div class="recipe-info">
+                        <span>⏱ 30 min</span>
+                        <span>🍽 4 porções</span>
+                        <span>⭐ 4.8</span>
+                    </div>
+                    <p class="recipe-description">
+                        Um clássico italiano cremoso feito com ovos, queijo parmesão, pancetta e pimenta-do-reino.
+                    </p>
+                    <button class="recipe-button">Ver Receita</button>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">🍰</div>
+                <div class="recipe-details">
+                    <h2 class="recipe-title">Bolo de Chocolate</h2>
+                    <div class="recipe-info">
+                        <span>⏱ 60 min</span>
+                        <span>🍽 8 porções</span>
+                        <span>⭐ 4.9</span>
+                    </div>
+                    <p class="recipe-description">
+                        Bolo úmido de chocolate com cobertura de ganache. Perfeito para aniversários e ocasiões
+                        especiais.
+                    </p>
+                    <button class="recipe-button">Ver Receita</button>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">🥗</div>
+                <div class="recipe-details">
+                    <h2 class="recipe-title">Salada Caesar</h2>
+                    <div class="recipe-info">
+                        <span>⏱ 15 min</span>
+                        <span>🍽 2 porções</span>
+                        <span>⭐ 4.5</span>
+                    </div>
+                    <p class="recipe-description">
+                        Salada clássica com alface romana, croutons, parmesão e molho Caesar cremoso.
+                    </p>
+                    <button class="recipe-button">Ver Receita</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <label class="switch">
+                <input type="checkbox" id="disguise-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
