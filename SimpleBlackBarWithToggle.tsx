@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Switch } from 'react-native';
 
-const SimpleBlackBarWithToggle: React.FC = () => {
+interface SimpleBlackBarWithToggleProps {
+  onToggleChange?: (isEnabled: boolean) => void;  // 👈 AQUI - o walkie-talkie
+}
+
+const SimpleBlackBarWithToggle: React.FC<SimpleBlackBarWithToggleProps> = ({
+  onToggleChange
+}) => {
   const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
-  const toggleSwitch = (): void => setIsEnabled(previousState => !previousState);
+  const toggleSwitch = (): void => {
+    const newValue = !isEnabled;
+    setIsEnabled(newValue);
+    onToggleChange?.(newValue);
+  }
 
   return (
     <View style={styles.blackBar}>
