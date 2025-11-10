@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Switch } from 'react-native';
+import { View, Switch, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
 
-interface SimpleBlackBarWithToggleProps {
-  onToggleChange?: (isEnabled: boolean) => void;  // 👈 AQUI - o walkie-talkie
-}
+type Props = {
+  onToggleChange: (enabled: boolean) => void;
+  initialValue?: boolean;
+};
 
-const SimpleBlackBarWithToggle: React.FC<SimpleBlackBarWithToggleProps> = ({
-  onToggleChange
-}) => {
-  const [isEnabled, setIsEnabled] = useState<boolean>(false);
+export default function SimpleBlackBarWithToggle({ onToggleChange, initialValue = false }: Props) {
+  const [isEnabled, setIsEnabled] = useState(initialValue);
 
-  const toggleSwitch = (): void => {
+  const toggleSwitch = () => {
     const newValue = !isEnabled;
     setIsEnabled(newValue);
-    onToggleChange?.(newValue);
-  }
+    onToggleChange(newValue);
+  };
+
+  useEffect(() => {
+    setIsEnabled(initialValue);
+  }, [initialValue]);
 
   return (
-    <View style={styles.blackBar}>
+    <View style={styles.bar}>
       <Switch
-        trackColor={{ false: '#767577', true: '#81b0ff' }}
-        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-        ios_backgroundColor="#3e3e3e"
+        trackColor={{ false: "#767577", true: "#81b0ff" }}
+        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
         onValueChange={toggleSwitch}
         value={isEnabled}
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  blackBar: {
-    width: '100%',
-    height: 60,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
+  bar: {
+    backgroundColor: "rgba(0, 0, 0, 0.3)", // Preto com 30% de opacidade
+    width: "100%",
+    alignItems: "center",
+    padding: 12,
   },
 });
-
-export default SimpleBlackBarWithToggle;
